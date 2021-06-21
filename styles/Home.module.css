@@ -108,14 +108,138 @@
   line-height: 1.5;
 }
 
-.logo {
+/* .logo {
   height: 1em;
   margin-left: 0.5rem;
-}
+} */
 
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
+}
+
+/* FIXME:FIXME:FIXME:FIXME:FIXME: MY CSS FIXME:FIXME:FIXME:FIXME:FIXME: */
+
+/* NAVIGATOR SECTION */
+
+/* .logoContainer {
+  width: 10%;
+  height: 40%;
+  background-color: red;
+} */
+.logo {
+  width: 100%;
+  height: 100%;
+}
+
+.navigator {
+  margin: 2% 0;
+
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+.searchBar {
+  border-radius: 20px;
+  background: gray;
+  height: 70%;
+  width: 15%;
+  margin-right: 5%;
+  display: flex;
+}
+.locationBtn {
+  width: 40%;
+}
+.guestsBtn {
+  width: 40%;
+}
+
+/*FIXME:FIXME:FIXME:FIXME:FIXME: Property section FIXME:FIXME:FIXME:FIXME:FIXME: */
+
+.propertyContainer {
+  width: 25%;
+  flex: 0 0 auto;
+  flex-direction: column;
+}
+
+.propertyCard {
+  margin: 12px;
+  padding: 6px;
+  border: 1px solid black;
+  height: 450px;
+}
+
+@media (max-width: 600px) {
+  .propertyContainer {
+    width: 100%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 996px) {
+  .propertyContainer {
+    width: 50%;
+  }
+}
+
+@media (min-width: 997px) and (max-width: 1200px) {
+  .propertyContainer {
+    width: 33.333333%;
+  }
+}
+
+.propPhotosContainer {
+  background: rgba(0, 0, 0, 0.182);
+  width: 100%;
+  height: 75%;
+}
+.propPhotos {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.fullPropSectionContainer {
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.propDetails {
+  display: flex;
+  height: 15%;
+}
+.superHost {
+  margin: 3%;
+  width: 20%;
+  border-radius: 20px;
+  padding-top: 1%;
+  border: 1px solid rgb(117, 116, 116);
+  background-color: white;
+  text-align: center;
+  color: rgb(89, 88, 88);
+}
+.superHostHeading {
+  margin-top: 0;
+  font-family: sans-serif;
+}
+.propDescriptions {
+  padding-left: 2%;
+  height: 20px;
+  margin: 0%;
+
+  font-size: 120%;
+}
+.propTitle {
+  margin: 0;
+  font-family: sans-serif;
+}
+.type {
+  font-family: sans-serif;
+  font-weight: 200;
+  color: rgb(117, 117, 117);
+  width: 25%;
+  height: 50%;
+  margin-top: 4%;
+  margin-left: 2%;
 }
