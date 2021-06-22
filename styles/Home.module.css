@@ -124,39 +124,69 @@
 
 /* NAVIGATOR SECTION */
 
-/* .logoContainer {
+.logoContainer {
   width: 10%;
   height: 40%;
-  background-color: red;
-} */
-.logo {
-  width: 100%;
-  height: 100%;
+  margin-left: 6%;
 }
-
 .navigator {
   margin: 2% 0;
-
   height: 100px;
   display: flex;
   justify-content: space-between;
 }
+.searchBtn {
+  background: red;
+  width: 20%;
+}
+.searchBtn:hover {
+  background: rgba(135, 135, 135, 0.079);
+}
 .searchBar {
-  border-radius: 20px;
-  background: gray;
   height: 70%;
-  width: 15%;
-  margin-right: 5%;
+  width: 20%;
+  margin-right: 6%;
   display: flex;
+  border-radius: 20px;
+  overflow: auto;
+  box-shadow: 0.5px 0.5px 0.5px 0.5px gray;
+}
+.searchBar > button {
+  border: 0px solid black;
+  background: white;
+}
+.searchBar button:first-child {
+  border-right: 0.25px solid gray;
+}
+.searchBar button:last-child {
+  border-left: 0.25px solid gray;
+}
+.searchIcon {
+  width: 50%;
+  height: 50%;
 }
 .locationBtn {
   width: 40%;
+  font-size: 125%;
+  cursor: pointer;
+}
+.locationBtn:hover {
+  background: rgba(135, 135, 135, 0.079);
 }
 .guestsBtn {
   width: 40%;
+  font-size: 125%;
+  cursor: pointer;
+}
+.guestsBtn:hover {
+  background: rgba(135, 135, 135, 0.079);
 }
 
 /*FIXME:FIXME:FIXME:FIXME:FIXME: Property section FIXME:FIXME:FIXME:FIXME:FIXME: */
+.stayInFinland {
+  margin-left: 7%;
+  font-size: 150%;
+}
 
 .propertyContainer {
   width: 25%;
@@ -167,7 +197,6 @@
 .propertyCard {
   margin: 12px;
   padding: 6px;
-  border: 1px solid black;
   height: 450px;
 }
 
@@ -198,6 +227,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 30px;
 }
 .fullPropSectionContainer {
   padding-left: 5%;
@@ -207,17 +237,56 @@
 }
 .propDetails {
   display: flex;
+  justify-content: space-between;
   height: 15%;
 }
 .superHost {
   margin: 3%;
+  padding: 1%;
+  height: 5%;
   width: 20%;
-  border-radius: 20px;
-  padding-top: 1%;
+  border-radius: 10px;
   border: 1px solid rgb(117, 116, 116);
-  background-color: white;
   text-align: center;
   color: rgb(89, 88, 88);
+  font-size: 100%;
+}
+
+@media (min-width: 1790px) {
+  .superHost {
+    width: 25%;
+    padding-bottom: 3%;
+  }
+}
+@media (min-width: 1710px) and (max-width: 1790px) {
+  .superHost {
+    width: 25%;
+    padding-bottom: 3%;
+  }
+}
+@media (min-width: 1440px) and (max-width: 1710px) {
+  .superHost {
+    font-size: 80%;
+    width: 30%;
+  }
+}
+@media (min-width: 900px) and (max-width: 1440px) {
+  .superHost {
+    width: 30%;
+    font-size: 75%;
+    padding-bottom: 2%;
+  }
+}
+@media (max-width: 900px) {
+  .superHost {
+    font-size: 70%;
+    width: 25%;
+  }
+}
+@media (max-width: 650px) {
+  .superHost {
+    font-size: 50%;
+  }
 }
 .superHostHeading {
   margin-top: 0;
@@ -227,19 +296,188 @@
   padding-left: 2%;
   height: 20px;
   margin: 0%;
-
+  text-align: center;
   font-size: 120%;
 }
+@media (max-width: 600px) {
+  .propDescriptions {
+    font-size: 110%;
+  }
+}
 .propTitle {
-  margin: 0;
+  margin-top: -2%;
   font-family: sans-serif;
 }
 .type {
-  font-family: sans-serif;
   font-weight: 200;
   color: rgb(117, 117, 117);
-  width: 25%;
+  width: 45%;
   height: 50%;
   margin-top: 4%;
   margin-left: 2%;
+  font-size: 110%;
+}
+.ratingIcon {
+  margin-right: 5px;
+  width: 25px;
+  height: auto;
+  color: red;
+}
+.ratingsContainer {
+  display: flex;
+  margin-right: 3%;
+}
+.rate {
+  font-size: 120%;
+  margin: auto;
+}
+/*FIXME:FIXME:FIXME:FIXME:FIXME:Search OptionsFIXME:FIXME:FIXME:FIXME:FIXME: */
+.searchOptionsContainer {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 20vw;
+  z-index: 2;
+  overflow: auto;
+  background-color: white;
+  box-shadow: 0 5px rgba(0, 0, 0, 0.182);
+}
+.searchOptionsBackground {
+  height: 1000vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+.searchFields {
+  width: 90%;
+  margin: 3% 5%;
+  display: flex;
+  height: 15%;
+}
+.searchFields > button {
+  width: 33.33%;
+  border-radius: 20px;
+  border: 0px solid black;
+  box-shadow: 0.5px 0.5px 0.5px 0.5px rgb(171, 171, 171);
+  background: white;
+}
+.searchFields > button:focus {
+  border: 1px solid black;
+  outline: none;
+}
+.searchFields > button:last-child {
+  border: 0px solid black;
+}
+
+/* FIXME: */
+.options {
+  margin-left: 5%;
+  margin-top: -3%;
+  display: flex;
+  gap: 13%;
+}
+.options > ul {
+  list-style: none;
+}
+.locationOptions > li {
+  margin-top: 5%;
+}
+
+.locationSelections {
+  background-color: white;
+  width: auto;
+  height: auto;
+  font-size: 160%;
+  border: 0px solid black;
+  text-align: left;
+}
+.locationSelections:hover {
+  background: rgb(227, 227, 227);
+  border-radius: 10px;
+}
+.locationIcons {
+  color: rgb(59, 59, 59);
+  margin-bottom: -0.35%;
+}
+.barLocation {
+  margin-top: 2%;
+  margin-left: 5%;
+  text-align: left;
+  font-size: 125%;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.curLocation {
+  font-size: 20px;
+  text-align: left;
+  margin-left: 5%;
+  margin-top: -3%;
+}
+.guestOptions {
+  display: inline-block;
+  margin-top: 1%;
+  margin-left: 33%;
+}
+.adultCounter,
+.childrenCounter {
+  display: flex;
+}
+.increment {
+  width: auto;
+  height: auto;
+  font-size: 15px;
+}
+.counters {
+  font-size: 150%;
+  margin: 0 15%;
+}
+.adults,
+.children {
+  margin: 5% 0%;
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: 500;
+}
+.ages {
+  margin: 10% 0%;
+  color: rgb(157, 157, 157);
+}
+.adultContainer {
+  margin-bottom: 40%;
+}
+.searchSearch {
+  background: rgb(207, 42, 42);
+  width: 20%;
+  margin: auto;
+  padding-right: 5%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 5%;
+  color: white;
+  cursor: pointer;
+}
+.closeSearch {
+  background: red;
+  width: 5%;
+  height: 10%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+.guestFiller,
+.locationFiller {
+  cursor: pointer;
+}
+
+.guestFiller:hover,
+.locationFiller:hover {
+  border: 1px solid black;
+}
+.hidden {
+  display: none;
 }
