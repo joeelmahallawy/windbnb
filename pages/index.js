@@ -9,12 +9,16 @@ import { VscStarFull } from "react-icons/vsc";
 import { IoMdSearch } from "react-icons/io";
 import { MdPlace, MdClose } from "react-icons/md";
 import { Modal, Button, Form } from "react-bootstrap";
-import { set } from "lodash";
-import { first } from "lodash";
-// import "bootstrap/dist/css/bootstrap.css";
 
 export default function Home() {
   const [options, setOptions] = React.useState(false);
+  const [showPropertyModal, setshowPropertyModal] = React.useState(false);
+  const [targetModal, settargetModal] = React.useState();
+  function openPropertyModal(e) {
+    console.log(e.target.src);
+    setshowPropertyModal(!showPropertyModal);
+    return settargetModal(e.target);
+  }
 
   function PropertyCard({ arr }) {
     return arr.map((property, i) => {
@@ -38,6 +42,7 @@ export default function Home() {
               <img
                 src={property.photo}
                 className={classnames({ [styles.propPhotos]: true })}
+                onClick={openPropertyModal}
               />
             </div>
             <div className={classnames({ [styles.propDetails]: true })}>
@@ -76,33 +81,23 @@ export default function Home() {
     });
   }
 
-  function RenderResults(locationSearch, guestsSearch) {
-    const resultsArr = stays.filter((prop) => {
-      return (
-        prop.city == locationSearch.split(", ")[0] &&
-        prop.maxGuests >= guestsSearch
-      );
-    });
-    return <PropertyCard arr={resultsArr} />;
-  }
-
-  const [curLocation, setCurLocation] = useState("Choose, location");
-  const [adultCounter, setAdultCounter] = React.useState(0);
-  const [childrenCounter, setChildrenCounter] = React.useState(0);
-  function Search({ ops }) {
+  function Search({ options, setOptions }) {
+    const [curLocation, setCurLocation] = useState("Choose, location");
+    const [adultCounter, setAdultCounter] = React.useState(0);
+    const [childrenCounter, setChildrenCounter] = React.useState(0);
     const [locationState, setLocationState] = React.useState(true);
     const [guestState, setGuestState] = React.useState(false);
-    const [showOptions, setShowOptions] = useState(ops);
+
     return (
       <>
-        {showOptions && (
+        {options && (
           <div className={classnames({ [styles.parentOfModal]: true })}>
             <div
               className={classnames({ [styles.searchOptionsContainer]: true })}
             >
               <button
                 className={classnames({ [styles.closeSearch]: true })}
-                onClick={() => setShowOptions(!showOptions)}
+                onClick={() => setOptions(!options)}
               >
                 <MdClose size="80%" color="white" />
               </button>
@@ -143,11 +138,11 @@ export default function Home() {
                   <div
                     className={classnames({ [styles.searchSearch]: true })}
                     onClick={() => {
-                      RenderResults(
+                      renderResults(
                         curLocation,
                         adultCounter + childrenCounter
                       );
-                      setShowOptions(!showOptions);
+                      setOptions(!options);
                     }}
                   >
                     <IoMdSearch size="50px" />
@@ -290,7 +285,7 @@ export default function Home() {
             </div>
             <div
               className={classnames({ [styles.searchOptionsBackground]: true })}
-              onClick={() => setShowOptions(!showOptions)}
+              onClick={() => setOptions(!options)}
             ></div>
           </div>
         )}
@@ -298,24 +293,22 @@ export default function Home() {
     );
   }
 
-  // console.log(resultsArr);
-  // console.log(newArr);
-
+  const [resultsArr, setResultsArr] = useState([...stays]);
+  function renderResults(locationSearch, guestsSearch) {
+    const resultsArr = stays.filter((prop) => {
+      return (
+        prop.city == locationSearch.split(", ")[0] &&
+        prop.maxGuests >= guestsSearch
+      );
+    });
+    return setResultsArr(resultsArr);
+  }
   return (
     <>
       <Head>
-        {function RenderResults(locationSearch, guestsSearch) {
-          const resultsArr = stays.filter((prop) => {
-            return (
-              prop.city == locationSearch.split(", ")[0] &&
-              prop.maxGuests >= guestsSearch
-            );
-          });
-          return resultsArr;
-        }}
         <title>Windbnb</title>
       </Head>
-      {options && <Search ops={options} />}
+      {options && <Search options={options} setOptions={setOptions} />}
       <div
         className={classnames({
           [styles.navigator]: true,
@@ -330,7 +323,7 @@ export default function Home() {
             className={classnames({ [styles.logo]: true })}
             src={logo}
             height={30}
-            width={130}
+            width={160}
           />
         </div>
         <div
@@ -373,23 +366,31 @@ export default function Home() {
           [styles.fullPropSectionContainer]: true,
         })}
       >
-        {/* <RenderResults /> */}
         {/* FIXME:FIXME:FIXME: */}
-        {/* <PropertyCard arr={resultsArr} /> */}
 
-        <PropertyCard arr={stays} />
+        <PropertyCard arr={resultsArr} />
         {/* <PropertyCard arr={resultsArr} /> */}
-        {/* {console.log(adultCounter + childrenCounter)} */}
-        {/* <RenderResults
-          locationSearch={curLocation}
-          guestsSearch={adultCounter + childrenCounter}
-        /> */}
-        {/* {console.log(curLocation)} */}
-        {/* <RenderResults
-          locationSearch={curLocation}
-          guestsSearch={adultCounter + childrenCounter}
-        /> */}
       </div>
+      {showPropertyModal && (
+        <div
+          className={classnames({ [styles.propertyModalBackground]: true })}
+          onClick={() => setshowPropertyModal(!showPropertyModal)}
+        >
+          <div className={classnames({ [styles.propertyModal]: true })}>
+            <div
+              className={classnames({ [styles.propertyModalPicture]: true })}
+            >
+              {/* <PropertyCard arr={resultsArr} /> */}
+              <img
+                src={targetModal.src}
+                className={classnames({ [styles.propertyModalImg]: true })}
+              />
+            </div>
+
+            <div></div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
